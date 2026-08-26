@@ -1,0 +1,61 @@
+{
+    "name": "puff/i18n",
+    "description": "Internationalization component for Puff",
+    "type": "library",
+    "keywords": [
+        "php",
+        "i18n",
+        "localization",
+        "translation",
+        "puff"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "psr/http-message": "^2.0",
+        "puff/config": "dev-main",
+        "puff/console": "dev-main",
+        "puff/di": "dev-main"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^11.0",
+        "puff/http": "dev-main"
+    },
+    "autoload": {
+        "classmap": [
+            "src/Facades"
+        ],
+        "files": [
+            "lib/puff.php"
+        ],
+        "psr-4": {
+            "Puff\\I18n\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Puff\\I18n\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "puff": {
+            "config": {
+                "i18n.php": "config/i18n.php"
+            },
+            "providers": [
+                "Puff\\I18n\\ServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "scripts": {
+        "analyse": "phpstan analyse src lib tests --level=8 --memory-limit=1G",
+        "test": "phpunit tests"
+    }
+}
