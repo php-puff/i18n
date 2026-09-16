@@ -45,6 +45,9 @@
             },
             "providers": [
                 "Puff\\I18n\\ServiceProvider"
+            ],
+            "commands": [
+                "Puff\\I18n\\ConsoleProvider"
             ]
         }
     },
