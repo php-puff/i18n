@@ -59,7 +59,7 @@ final readonly class IniLoader implements LoaderInterface
             $items = \array_replace_recursive($items, $values);
         }
 
-        if ($this->cache !== null) {
+        if (!$this->debug && $this->cache !== null) {
             $this->cache->write($locale, $items);
         }
         return $items;

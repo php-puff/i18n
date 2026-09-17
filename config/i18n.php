@@ -15,6 +15,7 @@ return [
         \dirname(__DIR__) . '/i18n',
         \dirname(__DIR__) . '/app/I18n',
     ],
+    // Set to null or an empty string to disable the translation file cache.
     'cache' => \dirname(__DIR__) . '/runtime/i18n',
     'query' => 'i18n',
     'cookie' => 'i18n',

@@ -27,11 +27,12 @@ final class ServiceProvider extends BaseServiceProvider
                 'is_string',
             ));
             $cache = $config->get('i18n.cache');
+            $cache = \is_string($cache) ? \trim($cache) : null;
 
             return new IniLoader(
                 $sources,
-                \is_string($cache) && $cache !== '' ? new Cache($cache) : null,
-                false,
+                $cache !== null && $cache !== '' ? new Cache($cache) : null,
+                \getenv('PUFF_WATCH') === '1',
             );
         });
         $this->app->singleton(Detector::class, function (): Detector {

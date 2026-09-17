@@ -146,6 +146,15 @@ final class I18nTest extends TestCase
         \rmdir($cache);
     }
 
+    public function testDebugLoaderDoesNotReadOrWriteCache(): void
+    {
+        $cache = $this->directory . '/cache';
+        $loader = new IniLoader([$this->directory], new Cache($cache), true);
+
+        self::assertSame(['welcome' => ['message' => 'Hello %s']], $loader->load('en_US'));
+        self::assertDirectoryDoesNotExist($cache);
+    }
+
     public function testCacheRejectsPathTraversalAndPreservesUnrelatedFiles(): void
     {
         $directory = $this->directory . '/cache';
